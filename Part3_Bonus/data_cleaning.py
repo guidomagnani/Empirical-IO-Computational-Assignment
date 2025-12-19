@@ -3,7 +3,7 @@ import numpy as np
 
 
 class Data:
-    def __init__(self, root_dir='docs/Python_codes/'):
+    def __init__(self, root_dir='../docs/Python_codes/'):
         self.root_dir = root_dir
         self.data = None
 

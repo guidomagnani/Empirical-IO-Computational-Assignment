@@ -41,7 +41,7 @@ python 3
 # =============================================================================
 
 #Please change here the directory where you stored the data  
-dir= "docs/Python_codes/"
+dir= "../docs/Python_codes/"
 
 import pandas as pd
 import numpy as np  

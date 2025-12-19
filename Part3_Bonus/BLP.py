@@ -8,7 +8,7 @@ import time
 # import optimize2 as opt # import modified optimize.minimize_nelder-mead ; alternatively change line 569 from 'and' to 'or' on original optimize.py
 
 class BLP:
-    def __init__(self, data, theta2w, mtol, niter, root_dir='docs/Python_codes/', method='nelder-mead'):  # define data instances
+    def __init__(self, data, theta2w, mtol, niter, root_dir='../docs/Python_codes/', method='nelder-mead'):  # define data instances
 
         self.niter = niter
         self.mtol = mtol

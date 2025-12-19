@@ -1,5 +1,5 @@
 import pandas as pd
-dir= "C:\\Users\\guido\\Documents\\_EIO\\Computational\\Template_codes\\"   
+dir= "../docs/Python_codes/"   
 
 # Helper: load the estimates + SE + f-value per run
 def load_run(tag):
