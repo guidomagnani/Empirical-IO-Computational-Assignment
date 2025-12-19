@@ -41,21 +41,20 @@ python 3
 # =============================================================================
 
 #Please change here the directory where you stored the data  
-dir= "../docs/Python_codes/"
-
+import os
 import pandas as pd
 import numpy as np  
 
-class data():        
+base_dir = os.path.dirname(os.path.abspath(__file__))
+data_folder = os.path.join(base_dir, "..", "docs", "Python_codes")
 
-        
-#data location
-    loc1= dir + "data.csv"
-    loc2= dir+ "demogr.csv"
-    loc3= dir + "demogr_means.csv"
-    loc4= dir + "demogr_year_region_id.csv"
-    loc5= dir + "demogr_iqr.csv"
-    loc6= dir + "demogr_std.csv"
+class data:
+    loc1 = os.path.join(data_folder, "data.csv")
+    loc2 = os.path.join(data_folder, "demogr.csv")
+    loc3 = os.path.join(data_folder, "demogr_means.csv")
+    loc4 = os.path.join(data_folder, "demogr_year_region_id.csv")
+    loc5 = os.path.join(data_folder, "demogr_iqr.csv")
+    loc6 = os.path.join(data_folder, "demogr_std.csv")
 
 #load data
     data = pd.read_csv(loc1, sep=',', names= list(range(1,189)), encoding='cp1252')
@@ -216,7 +215,9 @@ class data():
         index_region = np.where(i_index_region)[0] +1 # +1 since id_region [1,34]
         i_index_year= data.loc[index_market[0],dummy_year_start:dummy_year_end] == (1/scale)
         index_year = np.where(i_index_year)[0] + 2005 
-        index_demogr=(demogr_year_region_id.loc[ demogr_year_region_id[1]==(index_year)[0]].index) & (demogr_year_region_id.loc[demogr_year_region_id[2] == index_region[0] ].index)
+        idx1 = demogr_year_region_id.loc[demogr_year_region_id[1] == index_year[0]].index
+        idx2 = demogr_year_region_id.loc[demogr_year_region_id[2] == index_region[0]].index
+        index_demogr = idx1.intersection(idx2)
         if np.isnan(index_demogr.values)== 1:
             print(['Demographics not found for region ' + np.array2string(index_region) + ' and year ' + np.array2string(index_year)])
         else:
@@ -242,9 +243,9 @@ class data():
     s_jt=data.loc[:,ms_col]
     s_jt= np.reshape(s_jt.values, (np.shape(s_jt)[0],1))#observed market share for product j at time t
     nmkt = len(id_demo)
-    r='/Users/sofiateles/Dropbox/PythonDemand/BLP algo/V.csv'
+    r = os.path.join(base_dir, "..", "docs", "Python_codes", "V.csv")
     v=pd.read_csv(r,sep=',',names= list(range(1000)))
-
+    
     #v = pd.DataFrame(np.random.randn(nmkt,demogr.shape[1]))
 
 

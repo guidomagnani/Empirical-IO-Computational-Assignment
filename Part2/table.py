@@ -1,5 +1,8 @@
 import pandas as pd
-dir= "../docs/Python_codes/"   
+import os
+base_dir = os.path.dirname(os.path.abspath(__file__))
+data_folder = os.path.join(base_dir, "SecondPart_csv")
+dir= data_folder + "/"   
 
 # Helper: load the estimates + SE + f-value per run
 def load_run(tag):

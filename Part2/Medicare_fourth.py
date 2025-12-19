@@ -41,21 +41,20 @@ python 3
 # =============================================================================
 
 #Please change here the directory where you stored the data  
-dir= "../docs/Python_codes/"   
-
+import os
 import pandas as pd
 import numpy as np  
 
-class data():        
+base_dir = os.path.dirname(os.path.abspath(__file__))
+data_folder = os.path.join(base_dir, "..", "docs", "Python_codes")
 
-        
-#data location
-    loc1= dir + "data.csv"
-    loc2= dir+ "demogr.csv"
-    loc3= dir + "demogr_means.csv"
-    loc4= dir + "demogr_year_region_id.csv"
-    loc5= dir + "demogr_iqr.csv"
-    loc6= dir + "demogr_std.csv"
+class data:
+    loc1 = os.path.join(data_folder, "data.csv")
+    loc2 = os.path.join(data_folder, "demogr.csv")
+    loc3 = os.path.join(data_folder, "demogr_means.csv")
+    loc4 = os.path.join(data_folder, "demogr_year_region_id.csv")
+    loc5 = os.path.join(data_folder, "demogr_iqr.csv")
+    loc6 = os.path.join(data_folder, "demogr_std.csv")
 
 #load data
     data = pd.read_csv(loc1, sep=',', names= list(range(1,189)), encoding='cp1252')
