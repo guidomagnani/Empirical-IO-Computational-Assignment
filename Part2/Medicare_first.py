@@ -605,9 +605,10 @@ class BLP:
         
         self.theta1_results= pd.DataFrame({'Theta1':self.theta1.reshape(self.K1,),'Std.Error_theta1': se[0:-self.theta2.shape[0]]},columns=(['Theta1','Std.Error_theta1'])) 
         self.theta2_results= pd.DataFrame({'Theta2':self.theta2.reshape(self.theta2.shape[0],), 'Std.Error_theta2':se[-self.theta2.shape[0]:]},columns=(['Theta2','Std.Error_theta2']))
-        self.theta1_results.to_csv(dir + "theta1.csv")
-        self.theta2_results.to_csv(dir + "theta2.csv")
-        self.gmmvalold
+        self.fval_results = pd.DataFrame({'Value of objective function at optimum': [self.gmmvalnew]})
+        self.theta1_results.to_csv(dir + "theta1_one.csv")
+        self.theta2_results.to_csv(dir + "theta2_one.csv")
+        self.fval_results.to_csv(dir + "fval_one.csv", index=False)
         
  
 # =============================================================================
